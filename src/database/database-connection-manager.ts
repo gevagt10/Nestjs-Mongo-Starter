@@ -46,11 +46,7 @@ export class DatabaseConnectionManager {
       Logger.log(`Connecting to database...`);
 
       mongoose
-        .connect(uri, {
-          useNewUrlParser: true,
-          useUnifiedTopology: true,
-          useCreateIndex: true,
-        })
+        .connect(uri)
         .then()
         .catch();
 

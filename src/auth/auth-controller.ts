@@ -21,12 +21,11 @@ export class AuthController {
     @Body('password') password: string,
   ): Promise<LoginResponse> {
     return this.authService.authenticate(email, password).then(user => {
-      const userToJSON = user.toJSON();
-      const token = this.authService.generateToken(userToJSON);
+      const token = this.authService.generateToken(user);
 
       return {
         token: token,
-        user: userToJSON,
+        user: user,
       };
     });
   }

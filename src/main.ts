@@ -14,10 +14,11 @@ async function bootstrap() {
     }),
   );
   // Use '/api' for general prefix
-  app.setGlobalPrefix('api')
+  app.setGlobalPrefix('api');
 
   const port = process.env.port || 3000;
   await app.listen(port);
-  Logger.log(`Server is now listening on port ${port}...`)
+  Logger.log(`Server is now listening on port ${port}...`);
 }
+
 bootstrap().then().catch();
