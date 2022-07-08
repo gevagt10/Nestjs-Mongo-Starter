@@ -1,5 +1,5 @@
 {
-    "DB_URI": "",
+    "DB_URI": "<development-mongo-uri>",
     "CLIENT_URL": "http://localhost:4200",
     "JWT": {
         "SECRET": "sdfsdfsdfdsf786sdfhsdfSDFSDFsdfsdfsdf*G4`3^S/C"

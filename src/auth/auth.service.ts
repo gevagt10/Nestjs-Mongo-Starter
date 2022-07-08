@@ -15,21 +15,21 @@ export class AuthService {
     return UserProfileDbModel
       .findOne({ email })
       .select('+password').then(user => {
-      // If this user does not exist, throw the same error for security reasons
-      if (!user)
-        throw new UnauthorizedException(errorMsg);
-
-      return bcrypt.compare(password, user.password).then(match => {
-        // The password do not match the one saved on the database
-        if (!match)
+        // If this user does not exist, throw the same error for security reasons
+        if (!user)
           throw new UnauthorizedException(errorMsg);
-        return user;
+
+        return bcrypt.compare(password, user.password).then(match => {
+          // The password do not match the one saved on the database
+          if (!match)
+            throw new UnauthorizedException(errorMsg);
+          return user;
+        });
       });
-    });
   }
 
   generateToken(user: UserProfile): string {
-    return this.jwtService.sign(user);
+    return this.jwtService.sign(JSON.stringify(user));
   }
 
   decodeToken(token: string): UserProfile {
